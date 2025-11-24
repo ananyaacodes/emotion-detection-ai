@@ -1,19 +1,35 @@
 from textblob import TextBlob
 
-print("AI Emotion Detection from Text")
-print("-" * 40)
-
-while True:
-    text = input("Enter a sentence (or type 'exit' to quit): ")
-    if text.lower() == 'exit':
-        break
-
-    blob = TextBlob(text)
-    polarity = blob.sentiment.polarity
+def detect_emotion(text):
+    """Returns the emotion label based on sentiment polarity."""
+    polarity = TextBlob(text).sentiment.polarity
 
     if polarity > 0.2:
-        print("😊 Emotion Detected: Happy\n")
+        return "😊 Emotion Detected: Happy"
     elif polarity < -0.2:
-        print("😔 Emotion Detected: Sad\n")
+        return "😔 Emotion Detected: Sad"
     else:
-        print("😐 Emotion Detected: Neutral\n")
+        return "😐 Emotion Detected: Neutral"
+
+
+def main():
+    print("AI Emotion Detection from Text")
+    print("-" * 40)
+
+    while True:
+        text = input("Enter a sentence (or type 'exit' to quit): ").strip()
+
+        if text.lower() == "exit":
+            print("Exiting... Goodbye!")
+            break
+
+        if not text:
+            print("⚠️ Please enter some text.\n")
+            continue
+
+        result = detect_emotion(text)
+        print(result + "\n")
+
+
+if __name__ == "__main__":
+    main()
