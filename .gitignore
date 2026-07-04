@@ -1,0 +1,17 @@
+# Data & DB
+emotion_history.db
+*.db
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+venv/
+env/
+*.egg-info/
+
+# Model cache (downloaded by transformers on first run)
+.cache/
+
+# OS
+.DS_Store
